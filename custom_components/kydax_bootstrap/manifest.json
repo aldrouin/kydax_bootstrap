@@ -1,6 +1,9 @@
 {
   "domain": "kydax_bootstrap",
   "name": "Kydax Bootstrap",
+  "after_dependencies": [
+    "hacs"
+  ],
   "codeowners": [
     "@aldrouin"
   ],
@@ -11,9 +14,6 @@
     "http",
     "lovelace",
     "persistent_notification"
-  ],
-  "after_dependencies": [
-    "hacs"
   ],
   "documentation": "https://github.com/aldrouin/kydax_bootstrap",
   "integration_type": "hub",
