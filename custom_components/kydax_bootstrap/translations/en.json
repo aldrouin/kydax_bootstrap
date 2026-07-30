@@ -1,0 +1,175 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "New venue",
+        "description": "Kydax Bootstrap installs and configures everything a venue needs: the Kydax integrations, the customer dashboard and its lock. Start from a bundle exported from a reference venue, or from the built-in template.",
+        "data": {
+          "venue": "Venue name",
+          "source": "Starting point"
+        }
+      },
+      "bundle_file": {
+        "title": "Bundle file",
+        "description": "Upload the venue bundle (JSON) exported from Kydax Bootstrap on the reference venue.",
+        "data": {
+          "file": "Bundle"
+        }
+      },
+      "site_sound": {
+        "title": "Sound — Symetrix",
+        "description": "The Symetrix Jupiter address for this venue. Leave the address empty if this venue has no sound system.",
+        "data": {
+          "host": "Symetrix address (IP)",
+          "port": "Port",
+          "musiselect_host": "MusiSelect address (optional)"
+        }
+      },
+      "site_light": {
+        "title": "Lights — brightness source",
+        "description": "The outdoor brightness source used to drive the dimming.",
+        "data": {
+          "source_mode": "Source type",
+          "lux_entity": "Illuminance sensor",
+          "weather_entity": "Weather entity",
+          "skip_light": "This venue has no managed lights"
+        }
+      },
+      "light_map": {
+        "title": "Lights — mapping",
+        "description": "Match every light of the reference venue with the equivalent light here. Unmatched lights are dropped."
+      },
+      "light_pick": {
+        "title": "Lights — selection",
+        "description": "Pick the lights to manage. Day 90%, evening 30%, night 0% by default; adjust later in Kydax Light.",
+        "data": {
+          "lights": "Managed lights"
+        }
+      },
+      "switches": {
+        "title": "Customer switches",
+        "description": "A customer switch pauses music channels and/or freezes lights (e.g. « Terrasse »). Leave the name empty to add none.",
+        "data": {
+          "name": "Switch name",
+          "channels": "Paused sound channels",
+          "lights": "Frozen lights",
+          "add_another": "Add another switch"
+        }
+      },
+      "birthdays": {
+        "title": "Birthdays and events",
+        "description": "Each event triggers a Symetrix preset (e.g. the birthday song), optionally for a fixed duration before returning to another preset. Leave the name empty to add none.",
+        "data": {
+          "name": "Event name",
+          "preset": "Symetrix preset (1-150)",
+          "duration": "Duration (seconds, optional)",
+          "return_preset": "Return preset (optional)",
+          "add_another": "Add another event"
+        }
+      },
+      "dashboard": {
+        "title": "Customer dashboard",
+        "description": "The locked dashboard shown to the staff. The kiosk lock hides the header and sidebar for non-administrators.",
+        "data": {
+          "title": "Dashboard title",
+          "url_path": "URL path",
+          "kiosk": "Lock it (kiosk mode)",
+          "background": "Background image (optional)"
+        }
+      },
+      "confirm": {
+        "title": "Ready to provision",
+        "description": "{components} component(s) to install, {channels} sound channel(s), {lights} light(s), {events} event(s). Provisioning downloads the components from GitHub, restarts Home Assistant, creates the Kydax configurations and builds the dashboard.",
+        "data": {
+          "start_now": "Start provisioning now"
+        }
+      }
+    },
+    "error": {
+      "invalid_file": "This file is not a valid bundle",
+      "invalid_version": "This bundle version is not supported",
+      "invalid_components": "The bundle's component list is invalid",
+      "invalid_dashboard": "The bundle's dashboard section is invalid",
+      "source_entity_required": "Pick the entity matching the chosen source type"
+    },
+    "abort": {
+      "single_instance_allowed": "Already configured. Only one Kydax Bootstrap instance is possible."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Kydax Bootstrap",
+        "menu_options": {
+          "provision": "Provision now (apply the bundle)",
+          "export": "Export the bundle",
+          "import": "Import a bundle"
+        }
+      },
+      "provision": {
+        "title": "Provision",
+        "description": "Applies the current bundle: installs missing components (with a restart if needed), creates or updates the Kydax configurations and rebuilds the dashboard. Progress is on the Kydax Bootstrap status sensor."
+      },
+      "export": {
+        "title": "Export the bundle",
+        "data": {
+          "path": "File name"
+        }
+      },
+      "import": {
+        "title": "Import a bundle",
+        "description": "Replaces the stored bundle. Use « Provision now » afterwards to apply it.",
+        "data": {
+          "file": "Bundle"
+        }
+      }
+    },
+    "error": {
+      "invalid_file": "This file is not a valid bundle",
+      "invalid_version": "This bundle version is not supported",
+      "invalid_components": "The bundle's component list is invalid",
+      "invalid_dashboard": "The bundle's dashboard section is invalid",
+      "write_failed": "Could not write the file"
+    },
+    "abort": {
+      "exported": "Bundle exported. Download it here: {url} (the file is also kept in config/www)."
+    }
+  },
+  "selector": {
+    "bundle_source": {
+      "options": {
+        "upload": "Upload a bundle exported from a reference venue",
+        "template": "Start from the built-in template"
+      }
+    },
+    "light_source_mode": {
+      "options": {
+        "lux": "Illuminance sensor (lux)",
+        "weather": "Weather entity"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Provisioning status"
+      }
+    },
+    "switch": {
+      "auto_update": {
+        "name": "Auto-update (installs at 4 AM)"
+      }
+    },
+    "button": {
+      "resume": {
+        "name": "Resume provisioning"
+      },
+      "check_updates": {
+        "name": "Check for updates"
+      },
+      "rebuild_dashboard": {
+        "name": "Rebuild the dashboard"
+      }
+    }
+  }
+}

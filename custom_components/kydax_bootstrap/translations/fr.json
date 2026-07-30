@@ -1,0 +1,175 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Nouvelle salle",
+        "description": "Kydax Bootstrap installe et configure tout ce qu'il faut pour une salle : les intégrations Kydax, le tableau de bord client et son verrouillage. Partez d'un bundle exporté d'une salle de référence, ou du modèle intégré.",
+        "data": {
+          "venue": "Nom de la salle",
+          "source": "Point de départ"
+        }
+      },
+      "bundle_file": {
+        "title": "Fichier bundle",
+        "description": "Téléversez le bundle de salle (JSON) exporté depuis Kydax Bootstrap sur la salle de référence.",
+        "data": {
+          "file": "Bundle"
+        }
+      },
+      "site_sound": {
+        "title": "Son — Symetrix",
+        "description": "L'adresse du Symetrix Jupiter de cette salle. Laissez l'adresse vide si cette salle n'a pas de système audio.",
+        "data": {
+          "host": "Adresse du Symetrix (IP)",
+          "port": "Port",
+          "musiselect_host": "Adresse du MusiSelect (optionnel)"
+        }
+      },
+      "site_light": {
+        "title": "Lumières — source de luminosité",
+        "description": "La source de luminosité extérieure qui pilote la gradation.",
+        "data": {
+          "source_mode": "Type de source",
+          "lux_entity": "Capteur d'éclairement",
+          "weather_entity": "Entité météo",
+          "skip_light": "Cette salle n'a pas de lumières gérées"
+        }
+      },
+      "light_map": {
+        "title": "Lumières — correspondance",
+        "description": "Associez chaque lumière de la salle de référence à la lumière équivalente ici. Les lumières sans correspondance sont abandonnées."
+      },
+      "light_pick": {
+        "title": "Lumières — sélection",
+        "description": "Choisissez les lumières à gérer. Jour 90 %, soir 30 %, nuit 0 % par défaut ; ajustez ensuite dans Kydax Light.",
+        "data": {
+          "lights": "Lumières gérées"
+        }
+      },
+      "switches": {
+        "title": "Interrupteurs client",
+        "description": "Un interrupteur client met des canaux de musique en pause et/ou fige des lumières (p. ex. « Terrasse »). Laissez le nom vide pour n'en ajouter aucun.",
+        "data": {
+          "name": "Nom de l'interrupteur",
+          "channels": "Canaux audio mis en pause",
+          "lights": "Lumières figées",
+          "add_another": "Ajouter un autre interrupteur"
+        }
+      },
+      "birthdays": {
+        "title": "Fêtes et événements",
+        "description": "Chaque événement déclenche un preset Symetrix (p. ex. la chanson de fête), optionnellement pour une durée fixe avant de revenir à un autre preset. Laissez le nom vide pour n'en ajouter aucun.",
+        "data": {
+          "name": "Nom de l'événement",
+          "preset": "Preset Symetrix (1-150)",
+          "duration": "Durée (secondes, optionnel)",
+          "return_preset": "Preset de retour (optionnel)",
+          "add_another": "Ajouter un autre événement"
+        }
+      },
+      "dashboard": {
+        "title": "Tableau de bord client",
+        "description": "Le tableau de bord verrouillé présenté au personnel. Le verrouillage kiosque masque l'en-tête et la barre latérale pour les non-administrateurs.",
+        "data": {
+          "title": "Titre du tableau de bord",
+          "url_path": "Chemin d'URL",
+          "kiosk": "Le verrouiller (mode kiosque)",
+          "background": "Image de fond (optionnel)"
+        }
+      },
+      "confirm": {
+        "title": "Prêt à provisionner",
+        "description": "{components} composant(s) à installer, {channels} canal(aux) audio, {lights} lumière(s), {events} événement(s). Le provisionnement télécharge les composants depuis GitHub, redémarre Home Assistant, crée les configurations Kydax et construit le tableau de bord.",
+        "data": {
+          "start_now": "Démarrer le provisionnement maintenant"
+        }
+      }
+    },
+    "error": {
+      "invalid_file": "Ce fichier n'est pas un bundle valide",
+      "invalid_version": "Cette version de bundle n'est pas prise en charge",
+      "invalid_components": "La liste de composants du bundle est invalide",
+      "invalid_dashboard": "La section tableau de bord du bundle est invalide",
+      "source_entity_required": "Choisissez l'entité correspondant au type de source choisi"
+    },
+    "abort": {
+      "single_instance_allowed": "Déjà configuré. Une seule instance de Kydax Bootstrap est possible."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Kydax Bootstrap",
+        "menu_options": {
+          "provision": "Provisionner maintenant (appliquer le bundle)",
+          "export": "Exporter le bundle",
+          "import": "Importer un bundle"
+        }
+      },
+      "provision": {
+        "title": "Provisionner",
+        "description": "Applique le bundle actuel : installe les composants manquants (avec un redémarrage au besoin), crée ou met à jour les configurations Kydax et reconstruit le tableau de bord. La progression est sur le capteur d'état Kydax Bootstrap."
+      },
+      "export": {
+        "title": "Exporter le bundle",
+        "data": {
+          "path": "Nom du fichier"
+        }
+      },
+      "import": {
+        "title": "Importer un bundle",
+        "description": "Remplace le bundle enregistré. Utilisez ensuite « Provisionner maintenant » pour l'appliquer.",
+        "data": {
+          "file": "Bundle"
+        }
+      }
+    },
+    "error": {
+      "invalid_file": "Ce fichier n'est pas un bundle valide",
+      "invalid_version": "Cette version de bundle n'est pas prise en charge",
+      "invalid_components": "La liste de composants du bundle est invalide",
+      "invalid_dashboard": "La section tableau de bord du bundle est invalide",
+      "write_failed": "Impossible d'écrire le fichier"
+    },
+    "abort": {
+      "exported": "Bundle exporté. Téléchargez-le ici : {url} (le fichier est aussi conservé dans config/www)."
+    }
+  },
+  "selector": {
+    "bundle_source": {
+      "options": {
+        "upload": "Téléverser un bundle exporté d'une salle de référence",
+        "template": "Partir du modèle intégré"
+      }
+    },
+    "light_source_mode": {
+      "options": {
+        "lux": "Capteur d'éclairement (lux)",
+        "weather": "Entité météo"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "État du provisionnement"
+      }
+    },
+    "switch": {
+      "auto_update": {
+        "name": "Mise à jour automatique (installée à 4 h)"
+      }
+    },
+    "button": {
+      "resume": {
+        "name": "Reprendre le provisionnement"
+      },
+      "check_updates": {
+        "name": "Vérifier les mises à jour"
+      },
+      "rebuild_dashboard": {
+        "name": "Reconstruire le tableau de bord"
+      }
+    }
+  }
+}
