@@ -5,7 +5,7 @@ Home Assistant custom integration (domain `kydax_bootstrap`, GitHub repo
 installs the kydax components from GitHub releases, creates the sibling
 config entries via their `async_step_import`, builds the locked customer
 Lovelace dashboard, and runs the family's centralized 4 AM auto-update.
-Siblings: kydax_sound (`C:\Workspace\kydax_symetrix`), kydax_light
+Siblings: kydax_sound (`C:\Workspace\kydax_sound`), kydax_light
 (`C:\Workspace\kydax_light`, the family reference), kydax_test.
 
 ## Architecture rules (must match the family)
